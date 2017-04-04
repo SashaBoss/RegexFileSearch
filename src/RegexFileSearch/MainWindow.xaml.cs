@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Microsoft.Win32;
 
 namespace RegexFileSearch
 {
@@ -20,9 +21,31 @@ namespace RegexFileSearch
     /// </summary>
     public partial class MainWindow : Window
     {
+        public SearchConfig SearchConfig { get; set; }
         public MainWindow()
         {
             InitializeComponent();
+            SearchConfig = new SearchConfig();
+        }
+
+        private void browseButton_Click(object sender, RoutedEventArgs e)
+        {
+            GetFilePath();
+        }
+
+        private void GetFilePath()
+        {
+            OpenFileDialog dialog = new OpenFileDialog();
+            dialog.ShowDialog(this);
+            filePath.Text = dialog.FileName;
+            SearchConfig.FilePath = dialog.FileName;
+        }
+
+        private void searchButton_Click(object sender, RoutedEventArgs e)
+        {
+            IRegexSearch searcher = new SearchProcessor();
+
+            var result = searcher.Search(SearchConfig);
         }
     }
 }

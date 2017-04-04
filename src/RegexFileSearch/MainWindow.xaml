@@ -19,7 +19,8 @@
         <Label x:Name="searchProgressLabel" Content="Search progress:" HorizontalAlignment="Left" Margin="20,121,0,0" VerticalAlignment="Top"/>
         <ProgressBar x:Name="searchProgressBar" HorizontalAlignment="Left" Height="22" Margin="20,152,0,0" VerticalAlignment="Top" Width="487" Grid.ColumnSpan="2"/>
         <Label x:Name="resultLabel" Content="Resul:" HorizontalAlignment="Left" Margin="20,192,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="59" Margin="20,223,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="366"/>
-        <Button x:Name="browseButton" Content="Browse..." Grid.Column="1" HorizontalAlignment="Left" Margin="4,44,0,0" VerticalAlignment="Top" Width="101" Height="23" RenderTransformOrigin="0.507,0.374"/>
+        <TextBox x:Name="resultTextBox" HorizontalAlignment="Left" Height="59" Margin="20,223,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="366"/>
+        <Button x:Name="browseButton" Content="Browse..." Grid.Column="1" HorizontalAlignment="Left" Margin="4,44,0,0" VerticalAlignment="Top" Width="101" Height="23" RenderTransformOrigin="0.507,0.374" Click="browseButton_Click"/>
+        <Button x:Name="searchButton" Content="Search" Grid.Column="1" HorizontalAlignment="Left" Margin="10,223,0,0" VerticalAlignment="Top" Width="95" Click="searchButton_Click"/>
     </Grid>
 </Window>
