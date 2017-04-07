@@ -55,7 +55,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="IProgress.cs" />
     <Compile Include="ISearcher.cs" />
+    <Compile Include="LinearSearcher.cs" />
+    <Compile Include="LineProcessedEventArgs.cs" />
     <Compile Include="ParallelSearcher.cs" />
     <Compile Include="SearchProcessor.cs" />
     <Page Include="MainWindow.xaml">
@@ -67,7 +70,6 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="SearchConfig.cs" />
-    <Compile Include="IRegexSearch.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>

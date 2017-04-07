@@ -15,6 +15,6 @@
         /// <summary>
         /// Gets or sets regular expression.
         /// </summary>
-        public Regex Regex { get; set; }
+        public Regex SearchPattern { get; set; }
     }
 }

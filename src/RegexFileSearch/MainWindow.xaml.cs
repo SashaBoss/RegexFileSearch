@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -30,22 +31,47 @@ namespace RegexFileSearch
 
         private void browseButton_Click(object sender, RoutedEventArgs e)
         {
-            GetFilePath();
+            SearchConfig.FilePath = ReadFilePath();
         }
 
-        private void GetFilePath()
+        private string ReadFilePath()
         {
             OpenFileDialog dialog = new OpenFileDialog();
             dialog.ShowDialog(this);
             filePath.Text = dialog.FileName;
-            SearchConfig.FilePath = dialog.FileName;
+
+            return dialog.FileName;
         }
 
-        private void searchButton_Click(object sender, RoutedEventArgs e)
+        private string ReadRegex()
         {
-            IRegexSearch searcher = new SearchProcessor();
+            return searchRegex.Text;
+        }
 
-            var result = searcher.Search(SearchConfig);
+        private async void searchButton_Click(object sender, RoutedEventArgs e)
+        {
+            SearchConfig.SearchPattern = new Regex(ReadRegex());
+
+            var linearSearcher = new LinearSearcher();
+
+            var searcher = new SearchProcessor(linearSearcher);
+
+            linearSearcher.LineProcessed += ShowProgress;
+
+            var result = await searcher.Search(SearchConfig);
+
+            foreach (var res in result)
+            {
+                resultTextBox.Text += $"{res}\n";
+            }
+        }
+
+        public void ShowProgress(object sender, LineProcessedEventArgs args)
+        {
+            this.Dispatcher.Invoke(() =>
+            {
+                searchProgressBar.Value = Math.Round((double)args.LineNumber / args.TotalCount * 100);
+            });
         }
     }
 }

@@ -1,23 +1,36 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace RegexFileSearch
 {
-    public class SearchProcessor : IRegexSearch
+    /// <summary>
+    /// The search processor.
+    /// </summary>
+    public class SearchProcessor: ISearcher
     {
+        /// <summary>
+        /// Represent searching algorithm.
+        /// </summary>
         private readonly ISearcher _searcher;
 
-        public SearchProcessor()
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SearchProcessor"/>
+        /// </summary>
+        /// <param name="searchAlghorithm"></param>
+        public SearchProcessor(ISearcher searchAlghorithm)
         {
-            _searcher = new ParallelSearcher();
+            this._searcher = searchAlghorithm;
         }
 
-        public IEnumerable<string> Search(SearchConfig controller)
+        /// <summary>
+        /// Search by regex using provided searching algo.
+        /// </summary>
+        /// <param name="config"></param>
+        /// <returns></returns>
+        public async Task<IEnumerable<string>> Search(SearchConfig config)
         {
-            return _searcher.Search(controller.FilePath, controller.Regex);
+            return await _searcher.Search(config);
         }
     }
 

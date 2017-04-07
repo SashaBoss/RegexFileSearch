@@ -1,4 +1,6 @@
-﻿namespace RegexFileSearch
+﻿using System.Threading.Tasks;
+
+namespace RegexFileSearch
 {
     using System;
     using System.Collections.Generic;
@@ -9,7 +11,12 @@
     /// </summary>
     public class ParallelSearcher : ISearcher
     {
-        public IEnumerable<string> Search(string filePath, Regex regexPattern)
+        /// <summary>
+        /// Parralel searching algorithm.
+        /// </summary>
+        /// <param name="config"></param>
+        /// <returns></returns>
+        public Task<IEnumerable<string>> Search(SearchConfig config)
         {
             throw new NotImplementedException();
         }
