@@ -40,9 +40,9 @@ namespace RegexFileSearch
 
                 while ((line = r.ReadLine()) != null)
                 {
-                    var matches = config.SearchPattern.Matches(line);
+                    var match = config.SearchPattern.Match(line);
 
-                    results.AddRange(from object match in matches select match.ToString());
+                    results.Add(match.Groups[0].Value);
 
                     OnLineProcessesed(new LineProcessedEventArgs { LineNumber = lineNumber, TotalCount = linesCount });
 

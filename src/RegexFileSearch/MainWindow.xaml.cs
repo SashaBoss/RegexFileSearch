@@ -60,10 +60,7 @@ namespace RegexFileSearch
 
             var result = await searcher.Search(SearchConfig);
 
-            foreach (var res in result)
-            {
-                resultTextBox.Text += $"{res}\n";
-            }
+            resultTextBox.Text = result.Count().ToString();
         }
 
         public void ShowProgress(object sender, LineProcessedEventArgs args)
