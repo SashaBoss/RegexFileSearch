@@ -1,9 +1,10 @@
-﻿using System.Collections.Generic;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
-
-namespace RegexFileSearch
+﻿namespace RegexFileSearch
 {
+    using System.Collections.Generic;
+    using System.Text.RegularExpressions;
+    using System.Threading.Tasks;
+    using RegexFileSearch.Contracts;
+
     /// <summary>
     /// The search processor.
     /// </summary>
@@ -33,5 +34,4 @@ namespace RegexFileSearch
             return await _searcher.Search(config);
         }
     }
-
 }

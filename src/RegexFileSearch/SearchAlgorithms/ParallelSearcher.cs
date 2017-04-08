@@ -1,17 +1,15 @@
-﻿using System;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace RegexFileSearch
+﻿namespace RegexFileSearch.SearchAlgorithms
 {
+    using System;
     using System.Collections.Generic;
     using System.IO;
-    using System.Text.RegularExpressions;
+    using System.Threading.Tasks;
+    using RegexFileSearch.Contracts;
 
     /// <summary>
-    /// The linear searcher.
+    /// Searcher using parallel features.
     /// </summary>
-    public class LinearSearcher : ISearcher, IProgress
+    public class ParallelSearcher : ISearcher, IProgress
     {
         /// <summary>
         /// Search by regex line by line,
@@ -34,6 +32,8 @@ namespace RegexFileSearch
 
         private void ProcessFile(SearchConfig config, List<string> results, int lineNumber, int linesCount)
         {
+            var lines = File.ReadLines(config.FilePath);
+
             using (StreamReader r = new StreamReader(config.FilePath))
             {
                 string line;

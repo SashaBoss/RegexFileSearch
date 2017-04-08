@@ -1,4 +1,4 @@
-﻿namespace RegexFileSearch
+﻿namespace RegexFileSearch.Contracts
 {
     using System.Text.RegularExpressions;
 

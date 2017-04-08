@@ -1,4 +1,5 @@
 ﻿using System.Threading.Tasks;
+using RegexFileSearch.Contracts;
 
 namespace RegexFileSearch
 {

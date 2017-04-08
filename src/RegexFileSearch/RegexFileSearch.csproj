@@ -55,11 +55,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="IProgress.cs" />
-    <Compile Include="ISearcher.cs" />
-    <Compile Include="LinearSearcher.cs" />
-    <Compile Include="LineProcessedEventArgs.cs" />
-    <Compile Include="ParallelSearcher.cs" />
+    <Compile Include="Contracts\IProgress.cs" />
+    <Compile Include="Contracts\ISearcher.cs" />
+    <Compile Include="SearchAlgorithms\LinearSearcher.cs" />
+    <Compile Include="Contracts\LineProcessedEventArgs.cs" />
+    <Compile Include="SearchAlgorithms\ParallelSearcher.cs" />
     <Compile Include="SearchProcessor.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -69,7 +69,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="SearchConfig.cs" />
+    <Compile Include="Contracts\SearchConfig.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
