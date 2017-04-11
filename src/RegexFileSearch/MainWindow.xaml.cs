@@ -61,10 +61,9 @@ namespace RegexFileSearch
             var linearSearcher = new LinearSearcher();
             var paralelSearcher = new ParallelSearcher();
 
-            var searcher = new SearchProcessor(linearSearcher);
+            var searcher = new SearchProcessor(paralelSearcher);
 
             linearSearcher.LineProcessed += ShowProgress;
-
             paralelSearcher.LineProcessed += ShowProgress;
 
             var result = await searcher.Search(SearchConfig);

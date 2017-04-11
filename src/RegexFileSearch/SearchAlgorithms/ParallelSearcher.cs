@@ -42,12 +42,11 @@
             {
                 var match = config.SearchPattern.Match(line);
 
-                results.Add(match.Groups[0].Value);
-
-                lock (countLock)
+                if (match.Success)
                 {
-                    count++;
+                    results.Add(match.Groups[0].Value);
                 }
+
 
                 OnLineProcessesed(new LineProcessedEventArgs { LineNumber = count, TotalCount = linesCount });
 
