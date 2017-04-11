@@ -29,7 +29,7 @@
         /// </summary>
         /// <param name="config"></param>
         /// <returns></returns>
-        public async Task<IEnumerable<string>> Search(SearchConfig config)
+        public async Task<int> Search(SearchConfig config)
         {
             return await _searcher.Search(config);
         }

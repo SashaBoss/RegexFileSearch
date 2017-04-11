@@ -16,7 +16,7 @@
         /// </summary>
         /// <param name="config"></param>
         /// <returns></returns>
-        public async Task<IEnumerable<string>> Search(SearchConfig config)
+        public async Task<int> Search(SearchConfig config)
         {
             var results = new List<string>();
             int lineNumber = 1;
@@ -27,7 +27,7 @@
                 ProcessFile(config, results, lineNumber, linesCount);
             });
 
-            return results;
+            return results.Count;
         }
 
         private void ProcessFile(SearchConfig config, List<string> results, int lineNumber, int linesCount)

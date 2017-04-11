@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:RegexFileSearch"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="MainWindow" Height="309" Width="525">
     <Grid Margin="0,0,-8,25">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="36*"/>
@@ -18,9 +18,11 @@
         <TextBox x:Name="searchRegex" HorizontalAlignment="Left" Height="23" Margin="118,76,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="268"/>
         <Label x:Name="searchProgressLabel" Content="Search progress:" HorizontalAlignment="Left" Margin="20,121,0,0" VerticalAlignment="Top"/>
         <ProgressBar x:Name="searchProgressBar" HorizontalAlignment="Left" Height="22" Margin="20,152,0,0" VerticalAlignment="Top" Width="487" Grid.ColumnSpan="2" Minimum="1"/>
-        <Label x:Name="resultLabel" Content="Resul:" HorizontalAlignment="Left" Margin="20,192,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="resultTextBox" HorizontalAlignment="Left" Height="59" Margin="20,223,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="366"/>
+        <Label x:Name="resultLabel" Content="Matches:" HorizontalAlignment="Left" Margin="20,192,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="resultTextBox" HorizontalAlignment="Left" Height="20" Margin="82,198,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="82"/>
         <Button x:Name="browseButton" Content="Browse..." Grid.Column="1" HorizontalAlignment="Left" Margin="4,44,0,0" VerticalAlignment="Top" Width="101" Height="23" RenderTransformOrigin="0.507,0.374" Click="browseButton_Click"/>
-        <Button x:Name="searchButton" Content="Search" Grid.Column="1" HorizontalAlignment="Left" Margin="10,223,0,0" VerticalAlignment="Top" Width="95" Click="searchButton_Click"/>
+        <Button x:Name="searchButton" Content="Search" Grid.Column="1" HorizontalAlignment="Left" Margin="10,192,0,0" VerticalAlignment="Top" Width="95" Click="searchButton_Click"/>
+        <Label x:Name="label2" Content="Elapsed:" HorizontalAlignment="Left" Height="25" Margin="20,218,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="elapsed" HorizontalAlignment="Left" Height="20" Margin="82,223,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="82"/>
     </Grid>
 </Window>

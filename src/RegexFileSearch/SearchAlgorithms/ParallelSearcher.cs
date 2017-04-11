@@ -16,7 +16,7 @@
         /// </summary>
         /// <param name="config"></param>
         /// <returns></returns>
-        public async Task<IEnumerable<string>> Search(SearchConfig config)
+        public async Task<int> Search(SearchConfig config)
         {
             var results = new List<string>();
             int lineNumber = 1;
@@ -27,28 +27,31 @@
                 ProcessFile(config, results, lineNumber, linesCount);
             });
 
-            return results;
+            return results.Count;
         }
 
         private void ProcessFile(SearchConfig config, List<string> results, int lineNumber, int linesCount)
         {
             var lines = File.ReadLines(config.FilePath);
 
-            using (StreamReader r = new StreamReader(config.FilePath))
+            int count = 0;
+
+            var countLock = new Object();
+
+            Parallel.ForEach(lines, line =>
             {
-                string line;
+                var match = config.SearchPattern.Match(line);
 
-                while ((line = r.ReadLine()) != null)
+                results.Add(match.Groups[0].Value);
+
+                lock (countLock)
                 {
-                    var match = config.SearchPattern.Match(line);
-
-                    results.Add(match.Groups[0].Value);
-
-                    OnLineProcessesed(new LineProcessedEventArgs { LineNumber = lineNumber, TotalCount = linesCount });
-
-                    lineNumber++;
+                    count++;
                 }
-            }
+
+                OnLineProcessesed(new LineProcessedEventArgs { LineNumber = count, TotalCount = linesCount });
+
+            });
         }
 
         public event EventHandler<LineProcessedEventArgs> LineProcessed;

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -52,17 +53,26 @@ namespace RegexFileSearch
 
         private async void searchButton_Click(object sender, RoutedEventArgs e)
         {
+            Stopwatch sw = new Stopwatch();
+            sw.Start();
+
             SearchConfig.SearchPattern = new Regex(ReadRegex());
 
             var linearSearcher = new LinearSearcher();
+            var paralelSearcher = new ParallelSearcher();
 
             var searcher = new SearchProcessor(linearSearcher);
 
             linearSearcher.LineProcessed += ShowProgress;
 
+            paralelSearcher.LineProcessed += ShowProgress;
+
             var result = await searcher.Search(SearchConfig);
 
-            resultTextBox.Text = result.Count().ToString();
+            sw.Stop();
+
+            resultTextBox.Text = result.ToString();
+            elapsed.Text = (sw.ElapsedMilliseconds / 1000).ToString();
         }
 
         public void ShowProgress(object sender, LineProcessedEventArgs args)

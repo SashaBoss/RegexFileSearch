@@ -16,6 +16,6 @@ namespace RegexFileSearch
         /// </summary>
         /// <param name="searchConfig"></param>
         /// <returns></returns>
-        Task<IEnumerable<string>> Search(SearchConfig searchConfig);
+        Task<int> Search(SearchConfig searchConfig);
     }
 }
