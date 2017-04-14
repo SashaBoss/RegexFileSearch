@@ -20,18 +20,19 @@
         {
             var results = new List<string>();
             int lineNumber = 1;
-            int linesCount = File.ReadAllLines(config.FilePath).Length;
 
             await Task.Run(() =>
             {
-                ProcessFile(config, results, lineNumber, linesCount);
+                ProcessFile(config, results, lineNumber);
             });
 
             return results.Count;
         }
 
-        private void ProcessFile(SearchConfig config, List<string> results, int lineNumber, int linesCount)
+        private void ProcessFile(SearchConfig config, List<string> results, int lineNumber)
         {
+            int linesCount = File.ReadAllLines(config.FilePath).Length;
+
             using (StreamReader r = new StreamReader(config.FilePath))
             {
                 string line;
