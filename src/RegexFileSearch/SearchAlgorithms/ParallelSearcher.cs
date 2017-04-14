@@ -47,6 +47,10 @@
                     results.Add(match.Groups[0].Value);
                 }
 
+                lock (countLock)
+                {
+                    count++;
+                }
 
                 OnLineProcessesed(new LineProcessedEventArgs { LineNumber = count, TotalCount = linesCount });
 
